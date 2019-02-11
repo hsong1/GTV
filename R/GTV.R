@@ -26,7 +26,7 @@ GTV<-function(X,y,Sigma,delta,lam_ridge,lam_1TV=NULL,family='Gaussian',nlambda =
     BigY = c(y,rep(0,m))
     if (is.null(BigX)) {
       BigIX = c(rep(1,n),rep(0,m))
-      BigX = cbind(BigIX,rbind(XN,sqrt(n*lam_ridge)*Bt)) #(n+m) by (p+1)
+      BigX = cbind(BigIX,rbind(XN,sqrt(2*n*lam_ridge)*Bt)) #(n+m) by (p+1)
     }
     if (is.null(BigXD)) {
       D = cbind(c(1,rep(0,p)),rbind(rep(0,m+p),invB)) #(p+1) by (m+p+1)
