@@ -1,6 +1,7 @@
 #'@import glmnet
 #'@import Matrix
 #'@export
+#' This is for GTV binomial
 GTV_binomial<-function(XN = XN,y = y,Bt = Bt,delta = delta,lam_ridge = lam_ridge,lam_1TV = lam_1TV,
                        nlambda = nlambda,lambda.min.ratio = lambda.min.ratio,
                        eps = eps, inner_eps = 1e-4, init = NULL, Hessian_bound=F, maxit = 1000){

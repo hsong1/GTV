@@ -2,7 +2,7 @@
 #'@export
 create_BigXD<-function(XN,Bt,delta,lam_ridge){
   
-  m = nrow(Bt)
+  m = nrow(Bt);n = nrow(XN)
   # input: XN, Bt, lam_ridge
   BigX = cbind(c(rep(1,n),rep(0,m)),rbind(XN,sqrt(2*n*lam_ridge)*Bt)) #(n+m) by (p+1)
   

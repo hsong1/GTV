@@ -1,5 +1,5 @@
 #'@export
-loss<-function(param,X,y,Sigma,delta,lam_ridge,lam_1TV,family=c("gaussian","binomial")){
+loss<-function(param,X,y,Sigma,lam_TV,lam_ridge,lam_1,family=c("gaussian","binomial")){
   family = match.arg(family,c("gaussian","binomial"))
   Bt = gen.Bt(Sigma)
   beta = param[-1]; a0 = param[1]
@@ -12,6 +12,7 @@ loss<-function(param,X,y,Sigma,delta,lam_ridge,lam_1TV,family=c("gaussian","bino
     l = sum(log(1+exp(eta))-y*eta)
   }
   
-  Pen = as.numeric(lam_ridge*crossprod(v)+lam_1TV*(sum(abs(v))+delta*sum(abs(beta))))
+  Pen = lam_ridge*crossprod(v)+lam_1*lam_TV*sum(abs(v))+lam_1*sum(abs(beta))
+  Pen = as.numeric(Pen)
   c(l=l,pen=Pen,loss=l+Pen)
 }
