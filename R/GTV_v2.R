@@ -3,11 +3,11 @@
 #'@export
 GTV_v2<-function(X,y,Sigma,lam_TV,lam_ridge,lam_1=NULL,family=c("gaussian","binomial"),nlambda = 100,
               lambda.min.ratio = ifelse(n<p,0.01,1e-04),weights=NULL,eps=1e-4,inner_eps = 1e-7,
-              init=NULL,Hessian_bound=FALSE,maxit=1000){
+              init=NULL,Hessian_bound=FALSE,maxit=1000,Bt=NULL){
   
   family = match.arg(family,c("gaussian","binomial"))
   XN = scale(X) # centered and scaled
-  Bt = gen.Bt(Sigma)
+  if (is.null(Bt)) {Bt = gen.Bt(Sigma)}
   
   delta = 1/lam_TV
   if(is.null(lam_1)){lam_1TV=NULL}else{lam_1TV = lam_1*lam_TV}
