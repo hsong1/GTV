@@ -1,4 +1,3 @@
-#'@import
 #'@export
 #run = 'all' means run cv.GTV in sequence (i.e. loop through each combination of lam_TV and lam_ridge)
 #run = 'stage1' means run cv.GTV for one pair of lam_TV and lam_ridge values. Save the results in a file begining with file_identifier.
