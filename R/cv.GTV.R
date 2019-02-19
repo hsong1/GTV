@@ -9,9 +9,6 @@
 #file_identifier = 'out/E'. Then the results for the ith value of lam_TV and lth value of lam_ridge will be saved in 'out/E_i_l.csv'
 # E could mean we used emperical covariance. 
 cv.GTV<-function(X,y,Sigma,family='Guassian',nlambda=100,nfolds=5,metric=c("mclr","l2"),run='all',file_identifier='',i=NULL,l=NULL){
-  #delta = c(0.0001,0.0005,0.001,0.005,0.01,0.05,0.1,0.5)
-  #lam_ridge = sort(c(1,10,10^2,10^3,10^4,10^5,10^6,10^7,10^8,10^9,10^10)/(10^10),
-  #                 decreasing = T)
   lam_TV = exp(seq(log(0.1),log(100),length.out = 5))
   lam_ridge = sort(exp(seq(log(10e-5),log(1),length.out = 5)),decreasing = T)
   delta = 1/lam_TV
