@@ -1,11 +1,11 @@
 #'@ import
 #'
-
 #run = 'all' means run cv.GTV in sequence (i.e. loop through each combination of lam_TV and lam_ridge)
 #run = 'stage1' means run cv.GTV for one pair of lam_TV and lam_ridge values. Save the results in a file begining with file_identifier.
 #run = 'stage2' read in all the files from stage1, merge them, and finish the cross validation.
-#If run = 'all', ignore file_identifier.
-#If run = 'stage1', then set i to the index of the lam_TV value you want and l to the index of the lam_ridge value.
+#If run = 'all', ignore file_identifier, i, and j.
+#If run = 'stage1', then set i to the index of the lam_TV value you want and l to the index of the lam_ridge value. Use file_identifier.
+#If run = 'stage2', then ignore i and j.
 #Example of file_identifier:
 #file_identifier = 'out/E'. Then the results for the ith value of lam_TV and lth value of lam_ridge will be saved in 'out/E_i_l.csv'
 # E could mean we used emperical covariance. 

@@ -1,3 +1,5 @@
+#'@ import
+#'
 Fit_CV<-function(X,y,Sigma,delta,lam_ridge,fit=NULL,
                  metric = c("mclr","l2"),family='Gaussian',nfolds=5,Bt=NULL){
   # Given delta, lam_ridge, select best lam_1TV
