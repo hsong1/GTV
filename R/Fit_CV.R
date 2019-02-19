@@ -1,7 +1,7 @@
 #'@export
 Fit_CV<-function(X,y,Sigma,lam_TV,lam_ridge,fit=NULL,
                  metric = c("mclr","l2"),family='Gaussian',nfolds=5,Bt=NULL){
-  # Given delta, lam_ridge, select best lam_1TV
+  # Given lam_TV, lam_ridge, select best lam_1TV
   # Return mlcr or l2 error, lambda_1TV
   n = nrow(X)
   if(is.null(fit)){
