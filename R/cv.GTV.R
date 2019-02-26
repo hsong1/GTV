@@ -34,15 +34,15 @@ cv.GTV<-function(X,y,Sigma,family='gaussian',nlambda=100,nfolds=5,metric=c("mclr
           fit_il = Fit_CV(X = X,y = y,Sigma = Sigma,lam_TV = lam_TV[i],lam_ridge = lam_ridge[l],
                           fit=NULL,metric = metric,nfolds=nfolds,family=family,Bt=Bt)
           coef = t(unlist(fit_il))
-          errMat.min[i,j] = coef[1]
-          errMat.1se[i,j] = coef[2]
-          se.errMat.min[i,j] = coef[3]
-          se.errMat.min[i,j] = coef[4]
-          lam_1.min[i,j] = coef[5]
-          lam_1.1se[i,j] = coef[6]
         } else {
-          res = read.csv(paste(file_identifier,'_',i,'_',l,'.csv',sep = ''))
+          coef = t(read.csv(paste(file_identifier,'_',i,'_',l,'.csv',sep = '')))
         }
+        errMat.min[i,l] = coef[1]
+        errMat.1se[i,l] = coef[2]
+        se.errMat.min[i,l] = coef[3]
+        se.errMat.min[i,l] = coef[4]
+        lam_1.min[i,l] = coef[5]
+        lam_1.1se[i,l] = coef[6]
       }
     }
     
