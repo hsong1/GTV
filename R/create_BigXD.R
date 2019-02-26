@@ -1,5 +1,4 @@
 #'@useDynLib GTV
-#'@importFrom(Rcpp,evalCpp)
 #'@export
 create_BigXD<-function(XN,Bt,delta,lam_ridge){
   
