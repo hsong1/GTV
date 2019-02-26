@@ -25,43 +25,24 @@ cv.GTV<-function(X,y,Sigma,family='gaussian',nlambda=100,nfolds=5,metric=c("mclr
     nd = length(lam_TV); nl = length(lam_ridge)
     
     errMat.min = Matrix(NA,nd,nl); errMat.1se = Matrix(NA,nd,nl)
-    se.errMat.min = Matrix(NA,nd,nl); se.errMat.1se = Matrix(NA,nd,nl)
+    se.errMat.min = Matrix(NA,nd,nl); se.errMat.min = Matrix(NA,nd,nl)
     lam_1.min = Matrix(NA,nd,nl);lam_1.1se = Matrix(NA,nd,nl)
     
     for (i in 1:length(lam_TV)) {
       for (l in 1:length(lam_ridge)) {
         if (run == 'all') {
-          res = matrix(NA,nrow = nlambda,ncol = nfolds)
-          for (k in 1:nlambda) {
-            fit_il = Fit_CV(X = X,y = y,Sigma = Sigma,lam_TV = lam_TV[i],lam_ridge = lam_ridge[l],
-                            fit=NULL,metric = metric,nfolds=nfolds,family=family,Bt=Bt)
-            res[k,] = t(unlist(fit_il)$x)
-          }
+          fit_il = Fit_CV(X = X,y = y,Sigma = Sigma,lam_TV = lam_TV[i],lam_ridge = lam_ridge[l],
+                          fit=NULL,metric = metric,nfolds=nfolds,family=family,Bt=Bt)
+          coef = t(unlist(fit_il))
+          errMat.min[i,j] = coef[1]
+          errMat.1se[i,j] = coef[2]
+          se.errMat.min[i,j] = coef[3]
+          se.errMat.min[i,j] = coef[4]
+          lam_1.min[i,j] = coef[5]
+          lam_1.1se[i,j] = coef[6]
         } else {
           res = read.csv(paste(file_identifier,'_',i,'_',l,'.csv',sep = ''))
         }
-        cvm = apply(res,1,mean); cvsd = apply(res,1,sd)/sqrt(nfolds)
-        indmin <- min(which(cvm==min(cvm)))
-        ind <-  intersect(which(cvm>=cvm[indmin]+cvsd[indmin]),(1:indmin))
-        if(length(ind)==0){ind1se <-  indmin
-        } else {
-          ind1se <-  max(ind)
-        }
-        
-        err.min = cvm[indmin]; se.err.min=cvsd[indmin]
-        lambda_1.min = lam_1[indmin]
-        err.1se = cvm[ind1se]; se.err.1se=cvsd[ind1se]
-        lambda_1.1se = lam_1[ind1se]
-        
-        lambda_1.min=lambda_1.min[[1]]
-        lambda_1.1se=lambda_1.1se[[1]]
-        
-        errMat.min[i,l] = err.min;
-        errMat.1se[i,l] = err.1se;
-        se.errMat.min[i,l] = se.err.min;
-        se.errMat.1se[i,l] = se.err.1se;
-        lam_1.min[i,l] = lambda_1.min
-        lam_1.1se[i,l] = lambda_1.1se
       }
     }
     
