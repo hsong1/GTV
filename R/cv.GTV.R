@@ -25,7 +25,7 @@ cv.GTV<-function(X,y,Sigma,family='gaussian',nlambda=100,nfolds=5,metric=c("mclr
     nd = length(lam_TV); nl = length(lam_ridge)
     
     errMat.min = Matrix(NA,nd,nl); errMat.1se = Matrix(NA,nd,nl)
-    se.errMat.min = Matrix(NA,nd,nl); se.errMat.min = Matrix(NA,nd,nl)
+    se.errMat.min = Matrix(NA,nd,nl); se.errMat.1se = Matrix(NA,nd,nl)
     lam_1.min = Matrix(NA,nd,nl);lam_1.1se = Matrix(NA,nd,nl)
     
     for (i in 1:length(lam_TV)) {
@@ -40,7 +40,7 @@ cv.GTV<-function(X,y,Sigma,family='gaussian',nlambda=100,nfolds=5,metric=c("mclr
         errMat.min[i,l] = coef[1]
         errMat.1se[i,l] = coef[2]
         se.errMat.min[i,l] = coef[3]
-        se.errMat.min[i,l] = coef[4]
+        se.errMat.1se[i,l] = coef[4]
         lam_1.min[i,l] = coef[5]
         lam_1.1se[i,l] = coef[6]
       }
