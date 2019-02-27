@@ -2,7 +2,7 @@
 #'@import glmnet
 #'@export
 GTV_v2<-function(X,y,Sigma,lam_TV,lam_ridge,lam_1=NULL,family=c("gaussian","binomial"),nlambda = 100,
-              lambda.min.ratio = ifelse(n<p,0.01,1e-04),weights=NULL,eps=1e-4,inner_eps = 1e-7,
+              lambda.min.ratio = ifelse(nrow(X)<ncol(X),0.01,1e-04),weights=NULL,eps=1e-4,inner_eps = 1e-7,
               init=NULL,Hessian_bound=FALSE,maxit=1000,Bt=NULL){
   
   family = match.arg(family,c("gaussian","binomial"))
