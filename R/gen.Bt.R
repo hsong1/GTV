@@ -1,5 +1,5 @@
 #'@import Matrix
-#'@export
+# #' @export
 gen.Bt<-function(Sigma){
   # Bt ; m by p matrix where m = # of edges
   p = ncol(Sigma)

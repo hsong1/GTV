@@ -1,13 +1,12 @@
 Package: GTV
 Type: Package
-Title: What the package does (short line)
+Title: Graph-based regularization for regression problems with alignment and highly-correlated designs
 Version: 1.0
 Date: 2019-02-07
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Yuan Li, Benjamin Mark, Garvesh Raskutti, Rebecca Willett, Hyebin Song, and David Neiman
+Maintainer: Hyebin Song <hsong56@wisc.edu>
+Description:  Implementation of the algorithm for solving graph-based regularization problem for regression problems with alignment and highly-correlated designs. See Li et al. (2019) <arXiv:1803.07658>
 Imports: Rcpp (>= 1.0.0), RcppEigen (>= 0.3.3.4.0)
-LinkingTo: Rcpp, RcppEigen
+LinkingTo: Rcpp, RcppEigen, glmnet, doParallel
 RoxygenNote: 6.1.1
 Encoding: UTF-8
