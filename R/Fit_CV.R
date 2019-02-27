@@ -3,7 +3,6 @@ Fit_CV<-function(X,y,Sigma,lam_TV,lam_ridge,fit=NULL,
                  metric = c("mclr","l2"),family='gaussian',nfolds=5,Bt=NULL){
   # Given lam_TV, lam_ridge, select best lam_1
   # Return mlcr or l2 error, lambda_1
-  n = nrow(X)
   if(is.null(fit)){
     fit1=GTV_v2(X = X,y = y,Sigma = Sigma,lam_TV = lam_TV,lam_ridge = lam_ridge,family = family,Bt=Bt)
   }

@@ -1,4 +1,5 @@
 #'@useDynLib GTV
+#'@import Matrix
 #'@export
 create_BigXD<-function(XN,Bt,delta,lam_ridge){
   
@@ -10,7 +11,6 @@ create_BigXD<-function(XN,Bt,delta,lam_ridge){
   B = rbind(Bt,delta*Matrix::diag(x = 1,nrow = p,ncol = p));
   invB = MASS::ginv(as.matrix(B))
   D = cbind(c(1,rep(0,p)),rbind(rep(0,m+p),invB)) #(p+1) by (m+p+1)
-  
   
   if(nnzero(BigX)/length(BigX)<0.1){
     D = Matrix(D,sparse = T)
