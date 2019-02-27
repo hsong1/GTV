@@ -20,7 +20,7 @@ cv.GTV<-function(X,y,Sigma,family='gaussian',nlambda=100,nfolds=5,metric=c("mclr
   if (run == 'stage1') {
     fit_il = Fit_CV(X = X,y = y,Sigma = Sigma,lam_TV = lam_TV[i],lam_ridge = lam_ridge[l],
                     fit=NULL,metric = metric,nfolds=nfolds,family=family,Bt=Bt)
-    write.csv(unlist(fit_il),paste(file_identifier,'_',i,'_',l,'_',k,'.csv',sep = ''))
+    write.csv(unlist(fit_il),paste(file_identifier,'_',i,'_',l,'.csv',sep = ''))
   } else {
     nd = length(lam_TV); nl = length(lam_ridge)
     
