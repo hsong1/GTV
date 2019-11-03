@@ -1,6 +1,5 @@
 README
 ================
-11/3/2019
 
 ### Regression with Graph-based Total-Variation Regularization
 
